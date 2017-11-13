@@ -1,4 +1,5 @@
 import math
+import re
 
 class BPMCalc:
     def __init__(self, original_bpm):
@@ -27,8 +28,14 @@ class BPMCalc:
             self.bpm_list[5],
             self.bpm_list[6]
             )
-        return result
+        print(result)
 
+while True:
+    bpm_value = input("通常速のBPMを入力してください(0 < bpm <= 300) => ")
+    if re.match("^[0-9]{1,3}$", bpm_value):
+        original_bpm = int(bpm_value)
+        break
 
-# original_bpm = int(input("通常速のBPMを入力してください(自然数３桁まで)"))
-# bpm_calc = BPMCalc.new(original_bpm)
+bpm_calc = BPMCalc(original_bpm)
+bpm_calc.calc()
+bpm_calc.get_result()
