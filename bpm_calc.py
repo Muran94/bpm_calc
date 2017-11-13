@@ -7,7 +7,7 @@ class BPMCalc:
 
     def calc(self):
         for mul_num in [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]:
-            self.bpm_list.append(round(self.original_bpm * mul_num))
+            self.bpm_list.append(math.floor(self.original_bpm * mul_num))
 
     def get_result(self):
         result = """

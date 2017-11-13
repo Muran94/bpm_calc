@@ -5,11 +5,19 @@ class TestBPMCalc(unittest.TestCase):
     def test_init(self):
         bpm_calc = BPMCalc(100)
         self.assertEqual(bpm_calc.original_bpm, 100)
+        bpm_calc = BPMCalc(200)
+        self.assertEqual(bpm_calc.original_bpm, 200)
+
 
     def test_calc(self):
         bpm_calc = BPMCalc(100)
         bpm_calc.calc()
         expected_result = [50, 75, 100, 125, 150, 175, 200]
+        self.assertListEqual(bpm_calc.bpm_list, expected_result)
+
+        bpm_calc = BPMCalc(150)
+        bpm_calc.calc()
+        expected_result = [75, 112, 150, 187, 225, 262, 300]
         self.assertListEqual(bpm_calc.bpm_list, expected_result)
 
     def test_get_result(self):
