@@ -1,5 +1,6 @@
 import math
 import re
+from termcolor import colored
 
 class BPMCalc:
     def __init__(self, original_bpm):
@@ -31,10 +32,12 @@ class BPMCalc:
         print(result)
 
 while True:
-    bpm_value = input("通常速のBPMを入力してください(0 < bpm <= 300) => ")
-    if re.match("^[0-9]{1,3}$", bpm_value):
+    bpm_value = input(colored("通常速のBPMを入力してください(0 < bpm <= 300) => ", "cyan"))
+    if re.match("^[1-9][0-9]{1,2}$", bpm_value):
         original_bpm = int(bpm_value)
         break
+    else:
+        print(colored("0 < bpm <= 300の範囲で入力してください。", "red"))
 
 bpm_calc = BPMCalc(original_bpm)
 bpm_calc.calc()
